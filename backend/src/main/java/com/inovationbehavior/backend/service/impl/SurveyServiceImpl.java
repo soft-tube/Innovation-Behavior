@@ -1,8 +1,8 @@
 package com.inovationbehavior.backend.service.impl;
 
 import com.inovationbehavior.backend.mapper.SurveyMapper;
-import com.inovationbehavior.backend.model.survey.AwardInfo;
-import com.inovationbehavior.backend.model.survey.Survey;
+import com.inovationbehavior.backend.entity.survey.AwardInfo;
+import com.inovationbehavior.backend.entity.survey.Survey;
 import com.inovationbehavior.backend.service.intf.SurveyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

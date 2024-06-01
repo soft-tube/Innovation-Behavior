@@ -1,7 +1,7 @@
 package com.inovationbehavior.backend.service.intf;
 
-import com.inovationbehavior.backend.model.survey.AwardInfo;
-import com.inovationbehavior.backend.model.survey.Survey;
+import com.inovationbehavior.backend.entity.survey.AwardInfo;
+import com.inovationbehavior.backend.entity.survey.Survey;
 
 public interface SurveyService {
     void postSurvey(Survey survey);

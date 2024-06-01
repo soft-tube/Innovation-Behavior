@@ -1,6 +1,6 @@
 package com.inovationbehavior.backend.service.intf;
 
-import com.inovationbehavior.backend.model.news.IbNews;
+import com.inovationbehavior.backend.entity.news.IbNews;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

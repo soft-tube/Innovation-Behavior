@@ -1,8 +1,8 @@
 package com.inovationbehavior.backend.controller;
 
 import com.inovationbehavior.backend.annotation.LogAnnotation;
-import com.inovationbehavior.backend.model.Patent;
-import com.inovationbehavior.backend.model.Result;
+import com.inovationbehavior.backend.entity.patent.Patent;
+import com.inovationbehavior.backend.entity.Result;
 import com.inovationbehavior.backend.service.intf.PatentService;
 import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;

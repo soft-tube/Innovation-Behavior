@@ -1,8 +1,6 @@
 package com.inovationbehavior.backend.service.intf;
 
-import com.inovationbehavior.backend.mapper.PatentMapper;
-import com.inovationbehavior.backend.model.Patent;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.inovationbehavior.backend.entity.patent.Patent;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

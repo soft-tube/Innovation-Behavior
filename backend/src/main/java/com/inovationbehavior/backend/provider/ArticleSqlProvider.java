@@ -1,6 +1,6 @@
 package com.inovationbehavior.backend.provider;
 
-import com.inovationbehavior.backend.model.economic.Article;
+import com.inovationbehavior.backend.entity.economic.Article;
 import org.apache.ibatis.jdbc.SQL;
 
 public class ArticleSqlProvider {

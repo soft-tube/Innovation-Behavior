@@ -1,7 +1,7 @@
 package com.inovationbehavior.backend.mapper;
 
-import com.inovationbehavior.backend.model.economic.Article;
-import com.inovationbehavior.backend.model.economic.Author;
+import com.inovationbehavior.backend.entity.economic.Article;
+import com.inovationbehavior.backend.entity.economic.Author;
 import com.inovationbehavior.backend.provider.ArticleSqlProvider;
 import org.apache.ibatis.annotations.*;
 

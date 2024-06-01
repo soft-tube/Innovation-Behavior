@@ -1,10 +1,9 @@
 package com.inovationbehavior.backend.mapper;
 
-import com.inovationbehavior.backend.model.Patent;
+import com.inovationbehavior.backend.entity.patent.Patent;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 

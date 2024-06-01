@@ -1,7 +1,7 @@
 package com.inovationbehavior.backend.service.impl;
 
 import com.inovationbehavior.backend.mapper.IbNewsMapper;
-import com.inovationbehavior.backend.model.news.IbNews;
+import com.inovationbehavior.backend.entity.news.IbNews;
 import com.inovationbehavior.backend.service.intf.IbNewsService;
 import com.inovationbehavior.backend.util.PutFile;
 import com.inovationbehavior.backend.util.TemporaryCredentialsProvider;
@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.TreeMap;

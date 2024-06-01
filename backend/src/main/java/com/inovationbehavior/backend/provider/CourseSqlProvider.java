@@ -1,6 +1,6 @@
 package com.inovationbehavior.backend.provider;
 
-import com.inovationbehavior.backend.model.intelligence.Course;
+import com.inovationbehavior.backend.entity.intelligence.Course;
 import org.apache.ibatis.jdbc.SQL;
 
 public class CourseSqlProvider {

@@ -1,10 +1,8 @@
 package com.inovationbehavior.backend.mapper;
 
-import com.inovationbehavior.backend.model.survey.AwardInfo;
-import com.inovationbehavior.backend.model.survey.Survey;
+import com.inovationbehavior.backend.entity.survey.Survey;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 import java.time.LocalDateTime;

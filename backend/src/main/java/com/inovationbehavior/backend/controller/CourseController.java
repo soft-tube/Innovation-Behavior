@@ -1,13 +1,11 @@
 package com.inovationbehavior.backend.controller;
 
-import com.inovationbehavior.backend.model.Result;
-import com.inovationbehavior.backend.model.economic.Article;
-import com.inovationbehavior.backend.model.intelligence.Course;
+import com.inovationbehavior.backend.entity.Result;
+import com.inovationbehavior.backend.entity.intelligence.Course;
 import com.inovationbehavior.backend.service.intf.CourseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

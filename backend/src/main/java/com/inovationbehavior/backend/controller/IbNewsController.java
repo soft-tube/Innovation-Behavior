@@ -1,7 +1,7 @@
 package com.inovationbehavior.backend.controller;
 
-import com.inovationbehavior.backend.model.Result;
-import com.inovationbehavior.backend.model.news.IbNews;
+import com.inovationbehavior.backend.entity.Result;
+import com.inovationbehavior.backend.entity.news.IbNews;
 import com.inovationbehavior.backend.service.intf.IbNewsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

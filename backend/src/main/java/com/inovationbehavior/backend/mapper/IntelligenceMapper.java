@@ -1,9 +1,7 @@
 package com.inovationbehavior.backend.mapper;
 
-import com.inovationbehavior.backend.model.intelligence.Course;
-import com.inovationbehavior.backend.model.intelligence.Lecturer;
-import com.inovationbehavior.backend.model.intelligence.PPAuthor;
-import com.inovationbehavior.backend.model.intelligence.PatentPledge;
+import com.inovationbehavior.backend.entity.intelligence.Course;
+import com.inovationbehavior.backend.entity.intelligence.Lecturer;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

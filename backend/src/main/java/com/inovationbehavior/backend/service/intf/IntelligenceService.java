@@ -1,13 +1,8 @@
 package com.inovationbehavior.backend.service.intf;
 
-import com.inovationbehavior.backend.model.intelligence.Course;
-import com.inovationbehavior.backend.model.intelligence.CourseList;
-import com.inovationbehavior.backend.model.intelligence.PatentPledge;
-import com.inovationbehavior.backend.model.intelligence.PatentPledgeList;
+import com.inovationbehavior.backend.entity.intelligence.Course;
+import com.inovationbehavior.backend.entity.intelligence.CourseList;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
 
 @Service
 public interface IntelligenceService {

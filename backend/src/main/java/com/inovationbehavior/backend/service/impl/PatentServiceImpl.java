@@ -1,14 +1,12 @@
 package com.inovationbehavior.backend.service.impl;
 
 import com.google.gson.Gson;
-import com.inovationbehavior.backend.constants.CosConstants;
 import com.inovationbehavior.backend.mapper.PatentMapper;
-import com.inovationbehavior.backend.model.Patent;
+import com.inovationbehavior.backend.entity.patent.Patent;
 import com.inovationbehavior.backend.service.intf.PatentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
