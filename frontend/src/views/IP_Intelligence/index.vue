@@ -1,18 +1,18 @@
 <template>
     <body>
-        <div class="update-notice">
+        <div v-if="!showmore" class="update-notice">
             <div class="content">
                 内容即将更新，敬请期待
             </div>
         </div>
-        <!-- <div class="header-container">
+        <div  v-if="showmore" class="header-container">
             <img class="head-img" src="../../public/img/Intelligence-head.jpg"/>
             <div class="text-overlay">
                 <h2>{{ $t('topnav.IP_Intelligence') }}/</h2>
                 <h3>{{ $t(ChosedItem) }}</h3>
             </div>
         </div>
-        <div class="whole-box">
+        <div  v-if="showmore" class="whole-box">
             <el-menu class="menu" default-active="1" @select="handleSelect">
                 <el-menu-item index="1">{{ $t('intelligence.course') }}</el-menu-item>
                 <el-menu-item index="2">{{ $t('intelligence.PatentPledge') }}</el-menu-item>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </body>
 </template>
 
@@ -44,6 +44,7 @@ import ContentItem from '../../components/public/ContentItem.vue'
 import { useIntelligenceStore } from '../../stores/Intelligence.js'
 import { ElMessage } from 'element-plus'
 const intelligenceStore = useIntelligenceStore()
+const showmore = true
 const menuList = [
     'intelligence.course',
     'intelligence.PatentPledge',

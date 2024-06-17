@@ -72,7 +72,8 @@ export function tableRowChange (tableData, colIndex, currentRow) {
     }  
   });  
   // 选中列补一个选中状态  
-  currentRow.selection[colIndex] = true;  
+  //currentRow.selection[colIndex] = true;  
+  currentRow.selection[colIndex] = !!currentRow.selection[colIndex];  
 }
 
 export function tableColChange(tableData, rowIndex, currentCol) {  
@@ -83,5 +84,6 @@ export function tableColChange(tableData, rowIndex, currentCol) {
       row.selection[colIndex] = false;  
     }  
   }); 
-  row.selection[currentCol] = true;
+  //row.selection[currentCol] = true;
+  row.selection[currentCol] = !!row.selection[currentCol];
 }

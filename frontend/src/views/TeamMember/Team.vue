@@ -5,7 +5,7 @@
                 内容即将更新，敬请期待
             </div>
         </div> -->
-        <div>
+        <div v-show="false">
             “开放专利与创新”上海调查研究团队由同济大学上海国际知识产权学院（SICIP）青年教师组成，是SICIP与德国马普创新与竞争研究所（MPIIC）联合科研的一部分。
         </div>
         <div class="worker-box">

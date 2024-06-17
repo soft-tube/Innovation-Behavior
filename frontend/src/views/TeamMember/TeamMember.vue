@@ -3,7 +3,7 @@
     <body>
         <div class="whole-box" style="font-family: SimSun;">
             <div class="content-box">
-                <div style="font-size: large;">
+                <div v-show="false" style="font-size: large;">
                     &nbsp&nbsp&nbsp&nbsp“开放专利与创新”上海调查研究团队由同济大学上海国际知识产权学院（SICIP）青年教师组成，是SICIP与德国马普创新与竞争研究所（MPIIC）联合科研的一部分。
                 </div>
                 <div class="title">

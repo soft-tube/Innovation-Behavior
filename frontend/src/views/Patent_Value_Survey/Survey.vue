@@ -8,9 +8,9 @@
             <el-dialog title="提示" v-model="showRecommendationDialog"
                 style="font-family: SimSun;width: 300px;align-items: center;justify-content: center;position: absolute; left: 20px;"
                 :before-close="handleRecommendationDialogClose">
-                <p style=" margin-top: -10px">建议手机横屏或在PC端填写调查问卷</p>
+                <p style=" margin-top: -10px">为方便阅读，请用手机横屏或PC端填写，谢谢</p>
             </el-dialog>
-            <el-dialog :modal="false" center :close-on-click-modal="false" :close-on-press-escape="false"
+            <!-- <el-dialog :modal="false" center :close-on-click-modal="false" :close-on-press-escape="false"
                 style="font-family: SimSun;width: 400px;align-items: center;justify-content: center;"
                 title="欢迎参加问卷调研，请输入邀请码" v-model="dialogVisible" :before-close="handleClose">
                 <el-card style="gap: 6px;border: none;align-items: center;justify-content: center;display: flex;"
@@ -24,29 +24,23 @@
                         </span>
                     </el-container>
                 </el-card>
-            </el-dialog>
-            <el-container style="margin-top: 10px;margin-right: 5px; width: 100%;">
+            </el-dialog> -->
+            <el-container style="margin-top: 10px; width: 100%;">
                 <el-tabs style="width: 100%;" v-model="activeName" tab-position="top" class="demo-tabs"
-                    @tab-click="handleClick" type="card" stretch="true">
+                    @tab-click="handleClick" stretch="true">
                     <el-tab-pane label="专利确认" name="专利信息确认">
                         <el-button type="primary" @click="showInput" v-show="false"
                             style="margin-bottom: 20px;">输入邀请码后确认填写资格</el-button>
-                        <introduction @allow-input="allowInput"/>
+                        <introduction @allow-input="allowInput" />
                     </el-tab-pane>
-                    <el-tab-pane label="个人信息" name="A" :disabled="disableInput">
-                        <part-a @switch-tab="switchTab" />
+                    <el-tab-pane label="企业版问卷" name="enterprise" :disabled="disableEnterpriseInput">
+                        <enterprise />
                     </el-tab-pane>
-                    <el-tab-pane label="企业研发与知识产权管理" name="B" :disabled="disableInput">
-                        <part-b @switch-tab="switchTab" />
+                    <el-tab-pane label="高校版问卷" name="campus" :disabled="disableCampusInput">
+                        <campus />
                     </el-tab-pane>
-                    <el-tab-pane label="专利技术价值" name="C" :disabled="disableInput">
-                        <part-c @switch-tab="switchTab" />
-                    </el-tab-pane>
-                    <el-tab-pane label="专利许可运用" name="D" :disabled="disableInput">
-                        <part-d @switch-tab="switchTab" />
-                    </el-tab-pane>
-                    <el-tab-pane label="知识产权政策" name="E" :disabled="disableInput">
-                        <part-e @switch-tab="switchTab" />
+                    <el-tab-pane label="个人版问卷" name="person" :disabled="disablePersonInput">
+                        <person />
                     </el-tab-pane>
                 </el-tabs>
             </el-container>
@@ -55,23 +49,19 @@
 </template>
 
 <script>
-import partA from '../../components/Survey/enterprise/partA.vue'
-import partB from '../../components/Survey/enterprise/partB.vue'
-import partC from '../../components/Survey/enterprise/partC.vue'
-import partD from '../../components/Survey/enterprise/partD.vue'
-import partE from '../../components/Survey/enterprise/partE.vue'
-import introduction from '../../components/Survey/enterprise/Introduction.vue'
+import introduction from '../../components/Survey/Introduction.vue'
+import campus from '../../components/Survey/campus/index.vue'
+import enterprise from '../../components/Survey/enterprise/index.vue'
+import person from '../../components/Survey/person/index.vue'
 import { surveyStore } from '../../stores/survey';
 import { ElMessage } from 'element-plus';
 import { Text } from 'vue'
 export default {
     components: {
-        partA,
-        partB,
-        partC,
-        partD,
-        partE,
-        introduction
+        introduction,
+        campus,
+        enterprise,
+        person,
     },
     data() {
         const surveyInfo = surveyStore().surveyInfo
@@ -82,8 +72,11 @@ export default {
             patentNo: "",
             dialogVisible: false, // 控制对话框显示的属性
             invitationCode: '', // 存储输入的邀请码
-            disableInput: true,
+            disableEnterpriseInput: true,
+            disableCampusInput: true,
+            disablePersonInput: true,
             showRecommendationDialog: false,//用于控制建议弹窗的显示
+            showRecommendationAgain: false,
         }
     },
     mounted() {
@@ -121,11 +114,28 @@ export default {
             });
         },
         allowInput(value){
-            this.disableInput=false;
-            ElMessage.success("请开始填写问卷")
+            if(value == '企业'){
+                this.disableEnterpriseInput = false
+                this.disableCampusInput = true
+                this.disablePersonInput = true
+                this.activeName = "enterprise"
+                ElMessage.success("请填写企业版问卷")
+            } else if(value == '大学'){
+                this.disableCampusInput = false
+                this.disableEnterpriseInput = true
+                this.disablePersonInput = true
+                this.activeName = "campus"
+                ElMessage.success("请填写高校版问卷")
+            } else if(value == '个人'){
+                this.disablePersonInput = false
+                this.disableEnterpriseInput = true
+                this.disableCampusInput = true
+                this.activeName = "person"
+                ElMessage.success("请填写个人版问卷")
+            }
         },
         checkScreenWidth() {
-            if (window.innerWidth < 500) {
+            if (window.innerWidth < 500 && this.showRecommendationAgain == false ) {
                 this.showRecommendationDialog = true;
             } else {
                 this.showRecommendationDialog = false;
@@ -133,6 +143,7 @@ export default {
         },
         handleRecommendationDialogClose(done) {
             this.showRecommendationDialog = false;
+            this.showRecommendationAgain = true;
             done();
         },
     },
@@ -161,6 +172,13 @@ export default {
     padding-right: 20px;
 }
 
-/* Style for portrait mode */
-@media screen and (orientation: portrait) {}
+/* 响应式设计调整 */
+@media(max-width: 500px) {
+    .whole-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+}
 </style>

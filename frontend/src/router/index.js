@@ -86,10 +86,22 @@ const routes = [
     component: () => import('../views/Patent_Value_Survey/Survey-results.vue')
   },
   {
+    // SurveyUtils
+    path: '/survey-utils',
+    name: 'survey-utils',
+    component: () => import('../views/Patent_Value_Survey/SurveyUtils.vue')
+  },
+  {
     // DataUsageInstructions
     path: '/data-usage-instructions',
     name: 'data-usage-instructions',
     component: () => import('../views/Patent_Value_Survey/DataUsageInstructions.vue')
+  },
+  {
+    // transaction
+    path: '/transaction',
+    name: 'transaction',
+    component: () => import('../views/Transaction/index.vue')
   }
 ]
 

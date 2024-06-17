@@ -83,59 +83,16 @@
             </el-form-item>
 
 
-            <el-form-item class="question" style="font-weight: bolder;" label="A06.您在以下年份所处的岗位是？">
-                <el-table :data="tablePAQ6" style="width: 100%" :row-style="{ height: '10px' } "
-                    :cell-style="{ padding: '0px' }">
-                    <el-table-column class=" answer" width="150%">
-                        <template #default="{ row, $index }">
-                            <template v-if="$index !== tablePAQ6.length - 1">
-                                {{ row.name }}
-                            </template>
-                               <template v-else>
-                                <el-input v-model="tablePAQ6[$index].name" style="height: 3vh;"
-                                    placeholder="其他，请说明"></el-input>
-                            </template>
-                        </template>
-                    </el-table-column>
-                    <el-table-column width="120%" class="answer" header-align="center"
-                        v-for="(column, colIndex) in colPAQ6" :key="colIndex" :label="column.label">
-                        <template #default="{ row }">
-                            <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
-                                @change="handlePAQ6(row, colIndex)"></el-checkbox>
-                        </template>
-                    </el-table-column>
-                </el-table>
-            </el-form-item>
-
-            <el-form-item class="question" style="font-weight: bolder;" label="A0601. 您在当前单位工作了几年?">
-                <el-text class="answer" style="font-family: Kaiti;font-weight: 100;text-indent: 2em;"><el-input size="small"
-                        v-model="form.pAq0601" style="width: 5vw;margin-left: 0.5vw;" placeholder="" />年</el-text>
-            </el-form-item>
-
-            <el-form-item class="question" style="font-weight: bolder;" label="A07. 您（的岗位）过去五年的年收入如何？(单位：人民币)">
-                <el-text class="answer"
-                    style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">2018年税前年收入，大约<el-input size="small"
-                        v-model="form.pAq0701" style="width: 5vw;margin-left: 0.5vw;" placeholder="" />万人民币</el-text>
-            </el-form-item>
-            <el-form-item class="question" style="font-weight: bolder;" label="">
-                <el-text class="answer"
-                    style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">2023年税前年收入，大约<el-input size="small"
-                        v-model="form.pAq0702" style="width: 5vw;margin-left: 0.5vw;" placeholder="" />万人民币</el-text>
-            </el-form-item>
-
-            <el-form-item class="question" style="font-weight: bolder;" label="A08.如果在同一家公司，您觉得未来三年的收入变化如何？">
-                <el-radio-group v-model="form.pAq08">
-                    <el-radio class="answer" label="总体保持不变" />
-                    <el-radio class="answer" label="每年减少 5%左右（幅度仍可接受）" />
-                    <el-radio class="answer" label="每年减少 10%以上 （幅度难以接受）" />
-                    <el-radio class="answer" label="每年增长 5%左右（符合个人预期）" />
-                    <el-radio class="answer" label="每年增长 10% 以上（超过个人预期）" />
+            <el-form-item class="question" style="font-weight: bolder;" label="A06.您目前的学习/工作状态是？">
+                <el-radio-group v-model="form.pAq06">
+                    <el-radio class="answer" label="在读学生" />
+                    <el-radio class="answer" label="研究员/高校教师" />
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item class="question" style="font-weight: bolder;" label="A09.如果成功实施该专利（例如签订许可合同等），您是否能获得以下奖励？">
-                <el-checkbox-group v-model="form.pAq09" style="display: flex;flex-wrap: wrap;"
-                @change="handlePAQ09Change">
+            <el-form-item class="question" style="font-weight: bolder;" label="A07.如果成功实施该专利（例如签订许可合同等），您是否能获得以下奖励？">
+                <el-checkbox-group v-model="form.pAq07" style="display: flex;flex-wrap: wrap;"
+                @change="handlePAQ07Change">
                     <el-checkbox class="answer" label="没有额外奖励，是必须完成的考核指标" />
                     <el-checkbox class="answer" label="更快的职业晋升" />
                     <el-checkbox class="answer" label="获得一次性现金奖励" />
@@ -146,40 +103,41 @@
                 </el-checkbox-group>
             </el-form-item>
             
-            <el-form-item class="question" v-if="showPAQ10" style="font-weight: bolder;" label="A10.如果有奖励，贵司如何进行计数？">
-                <el-radio-group v-model="form.pAq10">
+            <el-form-item class="question" v-if="showPAQ08" style="font-weight: bolder;" label="A08.如果有奖励，贵校如何进行计数？">
+                <el-radio-group v-model="form.pAq08">
                     <el-radio class="answer" label="根据所完成的专利商业化合同数量" />
                     <el-radio class="answer" label="根据所完成的专利商业化合同金额" />
                     <el-radio class="answer" label="不做区分" />
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item class="question" style="font-weight: bolder;" label="A11.您认为哪一类考核/奖励有利于激励您实施专利商业化？">
+            <el-form-item class="question" style="font-weight: bolder;" label="A09.您认为哪一类考核/奖励有利于激励您实施专利商业化？">
                 <el-form-item class="question blue-label" style="font-weight: bolder;" label="（请打分，1🌟为不重要，5🌟为非常重要）" />
-                <el-table :data="tablePAQ11" style="width: 100%;" :row-style="{ height: '10px' }"
+                <el-table :data="tablePAQ09" style="width: 100%;" :row-style="{ height: '10px' }"
                     :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="250%">
                         <template #default="{ row, $index }">
-                            <template v-if="$index !== tablePAQ11.length - 1">
+                            <template v-if="$index !== tablePAQ09.length - 1">
                                 {{ row.name }}
                             </template>
                             <template v-else>
-                                <el-input v-model="tablePAQ11[$index].name" style="height: 3vh;"
+                                <el-input v-model="tablePAQ09[$index].name" style="height: 3vh;"
                                     placeholder="其他，请说明"></el-input>
                             </template>
                         </template>
                     </el-table-column>
                     <el-table-column width="250%" class="answer" header-align="center"
-                        v-for="(column, colIndex) in colPAQ11" :key="colIndex" :label="column.label">
+                        v-for="(column, colIndex) in colPAQ09" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <!-- 在每个单元格内放置一个可选中的组件 -->
                             <el-rate text-color="#ff9900" size="large" v-model="row.rate"
                                 :texts="['not', 'so-so', 'relative', 'very', 'super']" show-text class="table-container"
-                                @change="handlePAQ11(row, colIndex)" />
+                                @change="handlePAQ09(row, colIndex)" />
                         </template>
                     </el-table-column>
                 </el-table>
             </el-form-item>
+
 
         </el-form>
         <el-button type="primary" @click="submit()" style="margin-top: 1vh;margin-left: 2vw;">提交问卷（A部分）</el-button>
@@ -188,7 +146,7 @@
 
 <script setup>
 import { ref, reactive, defineProps, defineEmits } from 'vue';
-import { surveyStore,tableRowChange,tableColChange} from '../../../stores/survey';
+import { surveyStore,tableRowChange,tableColChange} from '../../../../stores/survey';
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 
@@ -197,18 +155,13 @@ const surveyInfo = surveyStore().surveyInfo
 const form = reactive({
     pAq01: [],
     pAq02: "",
-    pAq02: "",
     pAq03: [],
     pAq04: [],
     pAq05: [],
     pAq06: [],
-    pAq0601: "",
-    pAq0701: "",
-    pAq0702: "",
+    pAq07: [],
     pAq08: "",
-    pAq09: [],
-    pAq10: "",
-    pAq11: [],
+    pAq09: []
 });
 
 const extraInput1 = ref("")
@@ -225,14 +178,14 @@ const handlePAQ01Change = (value) => {
     }
 };
 
-const showPAQ10 = ref(false);
-const handlePAQ09Change = (value) => {
+const showPAQ08 = ref(false);
+const handlePAQ07Change = (value) => {
     if (value.includes('没有额外奖励，是必须完成的考核指标')) {  
-        form.pAq09 = ['没有额外奖励，是必须完成的考核指标']; 
+        form.pAq07 = ['没有额外奖励，是必须完成的考核指标']; 
         value='没有额外奖励，是必须完成的考核指标'
         extraInput2.value = '';
     }
-    showPAQ10.value = (value != "没有额外奖励，是必须完成的考核指标" && value!='');
+    showPAQ08.value = (value != "没有额外奖励，是必须完成的考核指标" && value!='');
 };
 
 
@@ -306,31 +259,7 @@ const handlePAQ5 = (row, colIndex) => {
     form.pAq05 = tablePAQ5
 };
 
-
-const tablePAQ6 = ref([
-    { name: "在读学生", selection: [false, false, false, false] },
-    { name: "法务", selection: [false, false, false, false] },
-    { name: "研发人员", selection: [false, false, false, false] },
-    { name: "知识产权管理人员", selection: [false, false, false, false] },
-    { name: "专利审查员", selection: [false, false, false, false] },
-    { name: "医护人员", selection: [false, false, false, false] },
-    { name: "", selection: [false, false, false, false] },
-]);
-
-const colPAQ6 = [
-    { label: "2010" },
-    { label: "2015" },
-    { label: "2018" },
-    { label: "2023" },
-];
-
-// 处理单元格选中状态变化
-const handlePAQ6 = (row, colIndex) => {
-    tableRowChange(tablePAQ6.value,colIndex,row)
-    form.pAq06 = tablePAQ6
-};
-
-const tablePAQ11 = ref([
+const tablePAQ09 = ref([
     { name: "作为必须完成的硬性指标", rate: 0 },
     { name: "作为晋升的附加项", rate: 0 },
     { name: "签订合同后的一次性现金奖励", rate: 0 },
@@ -341,13 +270,13 @@ const tablePAQ11 = ref([
     { name: "", rate: 0 },
 ]);
 
-const colPAQ11 = [
+const colPAQ09 = [
     { label: "不重要-->重要" }
 ];
 
 // 处理单元格选中状态变化
-const handlePAQ11 = (row, colIndex) => {
-    form.pAq11 = tablePAQ11
+const handlePAQ09 = (row, colIndex) => {
+    form.pAq09 = tablePAQ09
 };
 
 const emits = defineEmits(['switch-tab']);
@@ -371,16 +300,15 @@ const changeTable = (table, col) => {
 const submit = async () => {
 
     form.pAq01.pop()
-    form.pAq09.pop()
+    form.pAq07.pop()
     form.pAq01.push(extraInput1.value)
-    form.pAq09.push(extraInput2.value)
+    form.pAq07.push(extraInput2.value)
 
     // 深拷贝
     let formData = JSON.parse(JSON.stringify(form));
     formData.pAq03 = changeTable(formData.pAq03,colPAQ3)
     formData.pAq04 = changeTable(formData.pAq04,colPAQ4)
     formData.pAq05 = changeTable(formData.pAq05,colPAQ5)
-    formData.pAq06 = changeTable(formData.pAq06,colPAQ6)
 
     // 将表单数据转换为对象数组
     const formDataArray = Object.entries(formData).map(([key, value]) => ({ [key]: value }));
@@ -395,6 +323,7 @@ const submit = async () => {
     const data = {
         invitationCode: invitationCode,
         patentNo: patentNo,
+        type: "大学",
         identification: formDataString
     };
     let response = await axios.post('/api/survey/identification', data);

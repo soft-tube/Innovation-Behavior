@@ -6,7 +6,7 @@
       <div style="width: 100%;min-height: calc(100vh - 450px);">
         <router-view></router-view>
       </div>
-      <img style="width: 100%;" src="./public/img/后.png"/>
+      <img v-show="false" style="width: 100%;" src="./public/img/后.png"/>
     </div>
   </div>
   <el-backtop :right="100" :bottom="100" />

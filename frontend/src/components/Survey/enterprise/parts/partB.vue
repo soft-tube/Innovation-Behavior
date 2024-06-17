@@ -1,5 +1,7 @@
 <template>
+    <h4 style="color: blue;">如已经填过“企业研发与知识产权管理"，可直接跳过该部分</h4>
     <el-card style="border-radius: 15px;width: 100%;">
+
         <p style="font-family: STKaiti;color: blue;font-weight: bold;">
             （在B部分，我们想了解下您所在机构/公司的经营与研发情况，部分信息需要您提供2018年与2023年的历史信息，谢谢支持！）
         </p>
@@ -105,15 +107,15 @@
                     <el-radio class="answer" label="完全独立" />
                     <el-radio class="answer" label="设置在研发部下" />
                     <el-radio class="answer" label="设置在法务部下" />
-                    <el-radio class="answer" label="其他，请注明"><el-input size="small"
-                            placeholder="其他，请注明"></el-input></el-radio>
+                    <el-radio class="answer" label="其他，请注明"><el-input size="small" placeholder="其他，请注明"
+                            v-model="extraInput4"></el-input></el-radio>
                 </el-radio-group>
             </el-form-item>
 
             <el-form-item class="question" v-if="showPBQ07" style="font-weight: bolder;"
                 label="B0703.如果设立了，请问贵司的知识产权部门有多少全职员工？">
                 <el-text class="answer" style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">大约<el-input
-                        size="small" v-model="form.pBq0301" style="width: 5vw;margin-left: 0.5vw"
+                        size="small" v-model="form.pBq0703" style="width: 5vw;margin-left: 0.5vw"
                         placeholder="" />人</el-text>
             </el-form-item>
 
@@ -208,7 +210,7 @@
 
 <script setup>
 import { ref, reactive, defineProps, defineEmits } from 'vue';
-import { surveyStore,tableColChange } from '../../../stores/survey';
+import { surveyStore,tableColChange } from '../../../../stores/survey';
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 const surveyInfo = surveyStore().surveyInfo
@@ -223,7 +225,7 @@ const form = reactive({
     pBq0501: "",
     pBq0502: "",
     pBq0601: "",
-    pBq0502: "",
+    pBq0602: "",
     pBq07: "",
     pBq0701: "",
     pBq0702: "",
@@ -239,6 +241,7 @@ const form = reactive({
 const extraInput1 = ref('')
 const extraInput2 = ref('')
 const extraInput3 = ref('')
+const extraInput4 = ref('')
 
 //跳转以及互斥
 const showPBQ07 = ref(false);
@@ -251,10 +254,14 @@ const handlePBQ09Change = (value) => {
     showPBQ09.value = value === "是的，多次" || value === "是的，一次";
 };
 
+const showPBQ10 = ref(false)
 const handlePBQ10Change = (value) => {
     if (value.includes('无专利商业化经历')) {  
         form.pBq10 = ['无专利商业化经历']; 
         extraInput2.value = '';
+        showPBQ10.value = false
+    }else{
+        showPBQ10.value = form.pBq10.length > 0
     }
 };
 
@@ -330,10 +337,13 @@ const changeTable = (table, col) => {
 }
 
 const submit = async () => {
-    form.pBq08.pop()
+    //form.pBq08.pop()
     form.pBq10.pop()
     form.pBq1001.pop()
-    form.pBq08.push(extraInput1.value)
+    if(extraInput4.value){
+        form.pBq0702 = extraInput4.value
+    }
+    //form.pBq08.push(extraInput1.value)
     form.pBq10.push(extraInput2.value)
     form.pBq1001.push(extraInput3.value)
 
@@ -358,6 +368,7 @@ const submit = async () => {
     const data = {
         invitationCode: invitationCode,
         patentNo: patentNo,
+        type: "企业",
         enterprise: formDataString
     };
     let response = await axios.post('/api/survey/enterprise', data);

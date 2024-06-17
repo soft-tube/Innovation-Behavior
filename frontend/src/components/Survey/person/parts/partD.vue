@@ -5,7 +5,7 @@
         </p>
 
         <el-form :model="form" size="large" label-position="top">
-            <el-form-item class="question" style="font-weight: bolder;" label="D01.贵司为什么申请该专利？">
+            <el-form-item class="question" style="font-weight: bolder;" label="D01.专利权人为什么申请该专利？">
                 <el-checkbox-group v-model="form.pDq01" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox class="answer" label="防止他人使用相关技术" />
                     <el-checkbox class="answer" label="获得高新技术企业认定" />
@@ -18,8 +18,9 @@
                 </el-checkbox-group>
             </el-form-item>
 
-            <el-form-item class="question" style="font-weight: bolder;" label="D02.过去三年，贵司是否为该专利技术进行过以下宣传推广？">
-                <el-checkbox-group v-model="form.pDq02" style="display: flex;flex-wrap: wrap;" @change="handlePDQ02Change">
+            <el-form-item class="question" style="font-weight: bolder;" label="D02.过去三年，专利权人是否为该专利技术进行过以下宣传推广？">
+                <el-checkbox-group v-model="form.pDq02" style="display: flex;flex-wrap: wrap;"
+                    @change="handlePDQ02Change">
                     <el-checkbox class="answer" label="报纸、杂志等广告宣传" />
                     <el-checkbox class="answer" label="线下展会、技术交易中心" />
                     <el-checkbox class="answer" label="企业官方网站" />
@@ -33,7 +34,7 @@
                 </el-checkbox-group>
             </el-form-item>
 
-            <el-form-item class="question" style="font-weight: bolder;" label="D03.贵司对于该专利，是否已经达成了许可交易？">
+            <el-form-item class="question" style="font-weight: bolder;" label="D03.专利权人对于该专利，是否已经达成了许可交易？">
                 <el-radio-group v-model="form.pDq03" @change="handlePDQ03Change">
                     <el-radio class="answer" label="是的，已达成多个许可交易。" />
                     <el-radio class="answer" label="是的，已达成一个许可交易。" />
@@ -43,10 +44,14 @@
 
             <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;"
                 label="D0301.如果已经达成许可交易，该交易发生在哪一年？">
-                <el-input size="small" class="answer" v-model="form.pDq0301" style="width: 240px" placeholder="年份" />
+                <div>
+                    <el-form-item class="question blue-label" style="font-weight: bolder;" label="（如有多次，回答最近一次即可）" />
+                    <el-input size="small" class="answer" v-model="form.pDq0301" style="width: 240px"
+                        placeholder="年份" />
+                </div>
             </el-form-item>
 
-            <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;" label="D0302.贵司对外许可该专利的目的是什么？">
+            <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;" label="D0302.对外许可该专利的目的是什么？">
                 <el-checkbox-group v-model="form.pDq0302" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox class="answer" label="高新技术企业的考核要求" />
                     <el-checkbox class="answer" label="获得许可收入" />
@@ -61,7 +66,7 @@
                 </el-checkbox-group>
             </el-form-item>
 
-            <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;" label="D0303.贵司对外许可的企业类型是？">
+            <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;" label="D0303.对外许可的企业类型是？">
                 <el-checkbox-group v-model="form.pDq0303" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox class="answer" label="国有企业" />
                     <el-checkbox class="answer" label="民营企业" />
@@ -72,7 +77,7 @@
                 </el-checkbox-group>
             </el-form-item>
 
-            <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;" label="D0304.贵司对外许可的企业规模是？">
+            <el-form-item class="question" v-if="showPDQ03" style="font-weight: bolder;" label="D0304.对外许可的企业规模是？">
                 <el-checkbox-group v-model="form.pDq0304" style="display: flex;flex-wrap: wrap;">
                     <el-checkbox class="answer" label="大型企业（>1000 人）" />
                     <el-checkbox class="answer" label="中型企业（100-1000 人）" />
@@ -116,7 +121,7 @@
                 </el-checkbox-group>
             </el-form-item>
 
-            <el-form-item class="question" style="font-weight: bolder;" label="D05.未来三年，贵司是尝试对外许可该专利？">
+            <el-form-item class="question" style="font-weight: bolder;" label="D05.未来三年，专利权人是尝试对外许可该专利？">
                 <el-radio-group v-model="form.pDq05" @change="handlePDQ05Change">
                     <el-radio class="answer" label="是的，我们希望能对外许可" />
                     <el-radio class="answer" label="否" />
@@ -193,7 +198,8 @@
             </el-form-item>
 
             <el-form-item class="question" style="font-weight: bolder;" label="D06.未来三年，贵司对该专利是否有其他商业化计划？">
-                <el-checkbox-group v-model="form.pDq06" style="display: flex;flex-wrap: wrap;" @change="handlePDQ06Change">
+                <el-checkbox-group v-model="form.pDq06" style="display: flex;flex-wrap: wrap;"
+                    @change="handlePDQ06Change">
                     <el-checkbox class="answer" label="专利转让" />
                     <el-checkbox class="answer" label="集团内部专利许可" />
                     <el-checkbox class="answer" label="与第三方专利许可" />
@@ -212,7 +218,7 @@
 
 <script setup>
 import { ref, reactive, defineProps, defineEmits } from 'vue';
-import { surveyStore } from '../../../stores/survey';
+import { surveyStore } from '../../../../stores/survey';
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 const surveyInfo = surveyStore().surveyInfo
@@ -304,6 +310,7 @@ const submit = async () => {
     const data = {
         invitationCode: invitationCode,
         patentNo: patentNo,
+        type: "个人",
         usage: formDataString
     };
     let response = await axios.post('/api/survey/usage', data);
@@ -338,6 +345,11 @@ const submit = async () => {
 .el-table {
     margin-left: 2.5em;
     margin-top: 1vh;
+}
+
+::v-deep .blue-label .el-form-item__label {
+    color: blue;
+    text-indent: 2em;
 }
 
 ::v-deep.el-table th {

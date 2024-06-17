@@ -23,15 +23,8 @@
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item class="question" v-if="showPCQ01" style="font-weight: bolder;" label="C0102.贵公司是否生产该产品？">
-                <el-radio-group v-model="form.pCq0102">
-                    <el-radio class="answer" label="是" />
-                    <el-radio class="answer" label="否" />
-                </el-radio-group>
-            </el-form-item>
-
-            <el-form-item class="question" v-if="showPCQ01" style="font-weight: bolder;" label="C0103.如何评价该产品市场的竞争程度？">
-                <el-table :data="tablePCQ0103" style="width: 100%" :row-style="{ height: '10px' }"
+            <el-form-item class="question" v-if="showPCQ01" style="font-weight: bolder;" label="C0102.如何评价该产品市场的竞争程度？">
+                <el-table :data="tablePCQ0102" style="width: 100%" :row-style="{ height: '10px' }"
                     :cell-style="{ padding: '0px' }">
                     <el-table-column class="answer" width="200%">
                         <template #default="{ row }">
@@ -39,24 +32,24 @@
                         </template>
                     </el-table-column>
                     <el-table-column width="150%" class="answer" header-align="center"
-                        v-for="(column, colIndex) in colPCQ0103" :key="colIndex" :label="column.label">
+                        v-for="(column, colIndex) in colPCQ0102" :key="colIndex" :label="column.label">
                         <template #default="{ row }">
                             <el-checkbox class="table-container1" v-model="row.selection[colIndex]"
-                                @change="handlePCQ0103(row, colIndex)"></el-checkbox>
+                                @change="handlePCQ0102(row, colIndex)"></el-checkbox>
                         </template>
                     </el-table-column>
                 </el-table>
             </el-form-item>
 
-            <el-form-item class="question" v-if="showPCQ01" style="font-weight: bolder;" label="C0104.有多少家厂商正在生产该专利产品？">
+            <el-form-item class="question" v-if="showPCQ01" style="font-weight: bolder;" label="C0103.有多少家厂商正在生产该专利产品？">
                 <el-text class="answer" style="font-family: Kaiti;font-weight: 100;text-indent: 2em;">大约<el-input
-                        size="small" v-model="form.pCq0104" style="width: 5vw;margin-left: 0.5vw"
+                        size="small" v-model="form.pCq0103" style="width: 5vw;margin-left: 0.5vw"
                         placeholder="" />家。</el-text>
             </el-form-item>
             
             <el-form-item class="question" v-if="showPCQ01" style="font-weight: bolder;"
-                label="C0105.如果形容贵公司的专利产品的市场份额？">
-                <el-radio-group v-model="form.pCq0105">
+                label="C0104.如果形容贵公司的专利产品的市场份额？">
+                <el-radio-group v-model="form.pCq0104">
                     <el-radio class="answer" label="占同类产品市场销售额 5%以下" />
                     <el-radio class="answer" label="占同类产品市场销售额 5%-20%" />
                     <el-radio class="answer" label="占同类产品市场销售额 20%-50%" />
@@ -153,7 +146,7 @@
                 </el-table>
             </el-form-item>
 
-            <el-form-item class="question" style="font-weight: bolder;" label="C09.在未来三年内，贵司是否会继续开发该专利技术？">
+            <el-form-item class="question" style="font-weight: bolder;" label="C09.未来三年内，您所在课题组是否会继续开发该专利技术？">
                 <el-radio-group v-model="form.pCq09">
                     <el-radio class="answer" label="是 ，会增加相关投入" />
                     <el-radio class="answer" label="是，但要减少相关研发投入" />
@@ -214,17 +207,16 @@
 
 <script setup>
 import { ref, reactive, defineProps, defineEmits } from 'vue';
-import { surveyStore } from '../../../stores/survey';
+import { surveyStore } from '../../../../stores/survey';
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 const surveyInfo = surveyStore().surveyInfo
 const form = reactive({
     pCq01: "",
     pCq0101: "",
-    pCq0102: "",
-    pCq0103: [],
+    pCq0102: [],
+    pCq0103: "",
     pCq0104: "",
-    pCq0105: "",
     pCq02: "",
     pCq03: "",
     pCq04: [],
@@ -256,7 +248,7 @@ const handlePCQ04Change = (value) => {
 
 
 // 以下实现所有表格
-const tablePCQ0103 = ref([
+const tablePCQ0102 = ref([
     { name: "已经有2-3家龙头企业", selection: [false, false] },
     { name: "产品价格稳定", selection: [false, false] },
     { name: "不断有新企业进入", selection: [false, false] },
@@ -265,15 +257,15 @@ const tablePCQ0103 = ref([
     { name: "市场利润较高", selection: [false, false] },
 ]);
 
-const colPCQ0103 = [
+const colPCQ0102 = [
     { label: "2018" },
     { label: "2023" },
 ];
 
 // 处理单元格选中状态变化
-const handlePCQ0103 = (row, colIndex) => {
+const handlePCQ0102 = (row, colIndex) => {
     // 取消当前行其他单元格的选中状态
-    form.pCq0103 = tablePCQ0103
+    form.pCq0102 = tablePCQ0102
 };
 
 const tablePCQ8 = ref([
@@ -338,7 +330,7 @@ const submit = async () => {
     form.pCq05.push(extraInput1.value)
     // 深拷贝
     let formData = JSON.parse(JSON.stringify(form));
-    formData.pCq0103 = changeTable(formData.pCq0103, colPCQ0103)
+    formData.pCq0102 = changeTable(formData.pCq0102, colPCQ0102)
     
     // 将表单数据转换为对象数组
     const formDataArray = Object.entries(formData).map(([key, value]) => ({ [key]: value }));
@@ -357,6 +349,7 @@ const submit = async () => {
     const data = {
         invitationCode: invitationCode,
         patentNo: patentNo,
+        type: "大学",
         value: formDataString
     };
     let response = await axios.post('/api/survey/value', data);

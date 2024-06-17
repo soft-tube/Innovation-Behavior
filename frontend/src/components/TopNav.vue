@@ -1,10 +1,8 @@
 <template>
     <div id="whole-box">
         <div class="nav-container">
-            <div class="nav-logo">
+            <div v-show="true" class="nav-logo">
                 <img id="logo-img" src="../public/img/蓝色-前.png">
-                <!-- <p>Innovation&Behavior</p> -->
-                <!-- <p>占个logo位</p> -->
             </div>
             <div class="nav-box">
                 <div class="nav-menu-horizontal">
@@ -24,6 +22,8 @@
                                     @click="redirectToSurveyResults">{{ $t('topnav.Survey_Results') }} </el-menu-item>
                                 <el-menu-item index="5-4" @click="redirectToData">{{
                         $t('topnav.DataUsageInstructions') }}</el-menu-item>
+                        <el-menu-item index="5-5" @click="redirectToUtils">{{
+                        $t('topnav.Survey_Utils') }}</el-menu-item>
                             </el-menu-item-group>
                         </el-sub-menu>
                         <el-menu-item index="2" @click="redirectToNews" :class="{ 'blue-text': menutextcolor === 2 }">{{
@@ -34,6 +34,9 @@
                         <el-menu-item index="4" @click="redirectToIntelligence"
                             :class="{ 'blue-text': menutextcolor === 4 }">{{
                         $t('topnav.IP_Intelligence') }}</el-menu-item>
+                        <el-menu-item index="7" @click="redirectToTransaction"
+                            :class="{ 'blue-text': menutextcolor === 7}">{{
+                        $t('topnav.transaction') }}</el-menu-item>
                         <!-- <el-menu-item index="1" @click="redirectToPlatform" :class="{ 'blue-text': menutextcolor === 1 }">{{
                             $t('topnav.OpenLicensingPlatform') }}</el-menu-item> -->
                         <el-menu-item index="6" @click="redirectToTeam" :class="{ 'blue-text': menutextcolor === 6 }">{{
@@ -89,6 +92,9 @@
                                             <el-dropdown-item index="9" @click="redirectToData"
                                                 :class="{ 'blue-text': menutextcolor === 9 }">{{
                         $t('topnav.DataUsageInstructions') }}</el-dropdown-item>
+                        <el-dropdown-item index="10" @click="redirectToUtils"
+                                                :class="{ 'blue-text': menutextcolor === 10 }">{{
+                        $t('topnav.Survey_Utils') }}</el-dropdown-item>
                                         </el-dropdown-menu>
                                     </template>
                                 </el-dropdown>
@@ -104,7 +110,9 @@
                                 <el-dropdown-item index="4" @click="redirectToIntelligence"
                                     :class="{ 'blue-text': menutextcolor === 4 }">{{
                         $t('topnav.IP_Intelligence') }}</el-dropdown-item>
-
+<el-dropdown-item index="7" @click="redirectToTransaction"
+                                    :class="{ 'blue-text': menutextcolor === 7 }">{{
+                        $t('topnav.transaction') }}</el-dropdown-item>
                                 <el-dropdown-item index="6" @click="redirectToTeam"
                                     :class="{ 'blue-text': menutextcolor === 6 }">{{
                                     $t('topnav.Team') }}</el-dropdown-item>
@@ -182,8 +190,14 @@ const redirectToSurveyResults = () => {
     router.push('/survey-results');
 };
 
+const redirectToUtils = () => {
+    router.push('/survey-utils');
+};
 const redirectToData = () => {
     router.push('/data-usage-instructions');
+};
+const redirectToTransaction = () => {
+    router.push('/transaction');
 };
 
 </script>

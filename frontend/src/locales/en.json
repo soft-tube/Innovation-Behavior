@@ -15,7 +15,9 @@
         "Survey_Method": "Survey Method",
         "Survey_Fill": "Survey Fill",
         "Survey_Results": "Survey Results",
-        "DataUsageInstructions": "Data Usage Instructions"
+        "Survey_Utils": "样本专利权人检索",
+        "DataUsageInstructions": "Data Usage Instructions",
+        "transaction":"transaction"
     },
     "team": {
         "LiuXia1": "Liu Xia",
