@@ -1,6 +1,6 @@
 package com.inovationbehavior.backend.controller;
 
-import com.inovationbehavior.backend.entity.Result;
+import com.inovationbehavior.backend.model.Result;
 import com.inovationbehavior.backend.service.intf.EconomicService;
 import com.inovationbehavior.backend.service.intf.IntelligenceService;
 import lombok.RequiredArgsConstructor;

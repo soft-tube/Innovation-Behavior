@@ -1,10 +1,13 @@
 package com.inovationbehavior.backend.service.impl;
 
 import com.inovationbehavior.backend.mapper.EconomicMapper;
-import com.inovationbehavior.backend.entity.economic.Article;
-import com.inovationbehavior.backend.entity.economic.ArticleList;
-import com.inovationbehavior.backend.entity.economic.Author;
+import com.inovationbehavior.backend.mapper.IntelligenceMapper;
+import com.inovationbehavior.backend.model.economic.Article;
+import com.inovationbehavior.backend.model.economic.ArticleList;
+import com.inovationbehavior.backend.model.economic.Author;
+import com.inovationbehavior.backend.model.intelligence.*;
 import com.inovationbehavior.backend.service.intf.EconomicService;
+import com.inovationbehavior.backend.service.intf.IntelligenceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

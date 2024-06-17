@@ -1,7 +1,7 @@
 package com.inovationbehavior.backend.mapper;
 
-import com.inovationbehavior.backend.entity.intelligence.Course;
-import com.inovationbehavior.backend.entity.intelligence.Lecturer;
+import com.inovationbehavior.backend.model.intelligence.Course;
+import com.inovationbehavior.backend.model.intelligence.Lecturer;
 import com.inovationbehavior.backend.provider.CourseSqlProvider;
 import org.apache.ibatis.annotations.*;
 

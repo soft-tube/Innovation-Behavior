@@ -1,6 +1,6 @@
 package com.inovationbehavior.backend.mapper;
 
-import com.inovationbehavior.backend.entity.news.IbNews;
+import com.inovationbehavior.backend.model.news.IbNews;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

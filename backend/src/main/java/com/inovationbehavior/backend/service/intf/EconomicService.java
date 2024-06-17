@@ -1,7 +1,11 @@
 package com.inovationbehavior.backend.service.intf;
 
-import com.inovationbehavior.backend.entity.economic.Article;
-import com.inovationbehavior.backend.entity.economic.ArticleList;
+import com.inovationbehavior.backend.model.economic.Article;
+import com.inovationbehavior.backend.model.economic.ArticleList;
+import com.inovationbehavior.backend.model.intelligence.Course;
+import com.inovationbehavior.backend.model.intelligence.CourseList;
+import com.inovationbehavior.backend.model.intelligence.PatentPledge;
+import com.inovationbehavior.backend.model.intelligence.PatentPledgeList;
 import org.springframework.stereotype.Service;
 
 @Service

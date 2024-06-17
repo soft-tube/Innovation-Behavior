@@ -1,7 +1,8 @@
 package com.inovationbehavior.backend.service.impl;
 
 import com.inovationbehavior.backend.mapper.CourseMapper;
-import com.inovationbehavior.backend.entity.intelligence.Course;
+import com.inovationbehavior.backend.model.economic.Article;
+import com.inovationbehavior.backend.model.intelligence.Course;
 import com.inovationbehavior.backend.service.intf.CourseService;
 import com.inovationbehavior.backend.util.PutFile;
 import com.inovationbehavior.backend.util.TemporaryCredentialsProvider;

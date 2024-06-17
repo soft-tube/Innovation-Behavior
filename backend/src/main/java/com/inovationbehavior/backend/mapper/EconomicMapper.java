@@ -1,7 +1,11 @@
 package com.inovationbehavior.backend.mapper;
 
-import com.inovationbehavior.backend.entity.economic.Article;
-import com.inovationbehavior.backend.entity.economic.Author;
+import com.inovationbehavior.backend.model.economic.Article;
+import com.inovationbehavior.backend.model.economic.Author;
+import com.inovationbehavior.backend.model.intelligence.Course;
+import com.inovationbehavior.backend.model.intelligence.Lecturer;
+import com.inovationbehavior.backend.model.intelligence.PPAuthor;
+import com.inovationbehavior.backend.model.intelligence.PatentPledge;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
