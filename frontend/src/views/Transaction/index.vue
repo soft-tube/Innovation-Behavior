@@ -16,6 +16,8 @@
                     <p>{{ card.description }}</p>
                     <p>{{ card.pdf }}</p>
                     <p>{{ card.owner }}</p>
+                    <p>{{ card.tel }}</p>
+                    <p>{{ card.value }}</p>
                     <p>{{ card.time }}</p>
                 </el-card>
             </div>
@@ -29,12 +31,12 @@ import { Search } from '@element-plus/icons-vue'
 import axios from 'axios';
 const searchKey = ref('')
 const cards = ref([
-  { title: 'Card 1', description: 'Description 1', pdf:'1111111.pdf', owner:'XXZ', time:'2222-22-22' },
-  { title: 'Card 2', description: 'Description 2', pdf:'1111111.pdf', owner:'XXZ', time:'2222-22-22' },
-  { title: 'Card 3', description: 'Description 3', pdf:'1111111.pdf', owner:'XXZ', time:'2222-22-22' },
-  { title: 'Card 4', description: 'Description 4', pdf:'1111111.pdf', owner:'XXZ', time:'2222-22-22' },
-  { title: 'Card 5', description: 'Description 5', pdf:'1111111.pdf', owner:'XXZ', time:'2222-22-22' },
-  { title: 'Card 6', description: 'Description 6', pdf:'1111111.pdf', owner:'XXZ', time:'2222-22-22' },
+  { title: 'Card 1', description: 'Description 1', pdf:'1111111.pdf', owner:'XXZ',tel:"13333333333",value:'100w', time:'2222-22-22' },
+  { title: 'Card 2', description: 'Description 2', pdf:'1111111.pdf', owner:'XXZ',tel:"13333333333",value:'100w', time:'2222-22-22' },
+  { title: 'Card 3', description: 'Description 3', pdf:'1111111.pdf', owner:'XXZ',tel:"13333333333",value:'100w', time:'2222-22-22' },
+  { title: 'Card 4', description: 'Description 4', pdf:'1111111.pdf', owner:'XXZ',tel:"13333333333",value:'100w', time:'2222-22-22' },
+  { title: 'Card 5', description: 'Description 5', pdf:'1111111.pdf', owner:'XXZ',tel:"13333333333",value:'100w', time:'2222-22-22' },
+  { title: 'Card 6', description: 'Description 6', pdf:'1111111.pdf', owner:'XXZ',tel:"13333333333",value:'100w', time:'2222-22-22' },
 ])
 const formatDate = (dateString) => {
     const date = new Date(dateString);
