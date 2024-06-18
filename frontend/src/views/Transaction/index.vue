@@ -1,6 +1,8 @@
 <template>
-    <div style="display: flex;flex-direction: column;">
-        <div>
+
+    <body>
+        <div style="display: flex;flex-direction: column;">
+            <!-- <div>
             <el-input
                 v-model="searchKey"
                 style="width: 240px;margin-top: 5vh;"
@@ -8,21 +10,22 @@
                 :suffix-icon="Search"
                 @keyup.enter="getTransactions"
             />
-        </div>
-        <div class="card-container">
-            <div v-for="card in cards" :key="card.title" class="card-item">
-                <el-card class="hover-card">
-                    <h3>{{ card.title }}</h3>
-                    <p>{{ card.description }}</p>
-                    <p>{{ card.pdf }}</p>
-                    <p>{{ card.owner }}</p>
-                    <p>{{ card.tel }}</p>
-                    <p>{{ card.value }}</p>
-                    <p>{{ card.time }}</p>
-                </el-card>
+        </div> -->
+            <div class="card-container">
+                <div v-for="card in cards" :key="card.title" class="card-item">
+                    <el-card class="hover-card">
+                        <h3>{{ card.title }}</h3>
+                        <h4>{{ card.appln_id }}</h4>
+                        <p>{{ card.description }}</p>
+                        <p>专利拥有者：{{ card.owner }}</p>
+                        <p>联系方式： {{ card.tel }}</p>
+                        <p>意向转让价格： {{ card.value }}</p>
+                        <p>发布时间： {{ card.time }}</p>
+                    </el-card>
+                </div>
             </div>
         </div>
-    </div>
+    </body>
 </template>
 
 <script setup>
@@ -31,12 +34,12 @@ import { Search } from '@element-plus/icons-vue'
 import axios from 'axios';
 const searchKey = ref('')
 const cards = ref([
-  { title: 'Card 1', description: 'Description 1', pdf:'1111111.pdf', owner:'XXZ',tel:"13333333333",value:'100w', time:'2222-22-22' },
-  { title: 'Card 2', description: 'Description 2', pdf:'1111111.pdf', owner:'XXZ',tel:"13333333333",value:'100w', time:'2222-22-22' },
-  { title: 'Card 3', description: 'Description 3', pdf:'1111111.pdf', owner:'XXZ',tel:"13333333333",value:'100w', time:'2222-22-22' },
-  { title: 'Card 4', description: 'Description 4', pdf:'1111111.pdf', owner:'XXZ',tel:"13333333333",value:'100w', time:'2222-22-22' },
-  { title: 'Card 5', description: 'Description 5', pdf:'1111111.pdf', owner:'XXZ',tel:"13333333333",value:'100w', time:'2222-22-22' },
-  { title: 'Card 6', description: 'Description 6', pdf:'1111111.pdf', owner:'XXZ',tel:"13333333333",value:'100w', time:'2222-22-22' },
+    { title: 'Card 1', description: 'Description 1', appln_id: '1', owner: 'XXZ', tel: "13333333333", value: '100w', time: '2222-22-22' },
+    { title: 'Card 2', description: 'Description 2', appln_id: '2', owner: 'XXZ', tel: "13333333333", value: '100w', time: '2222-22-22' },
+    { title: 'Card 3', description: 'Description 3', appln_id: '3', owner: 'XXZ', tel: "13333333333", value: '100w', time: '2222-22-22' },
+    { title: 'Card 4', description: 'Description 4', appln_id: '4', owner: 'XXZ', tel: "13333333333", value: '100w', time: '2222-22-22' },
+    { title: 'Card 5', description: 'Description 5', appln_id: '5', owner: 'XXZ', tel: "13333333333", value: '100w', time: '2222-22-22' },
+    { title: 'Card 6', description: 'Description 6', appln_id: '6', owner: 'XXZ', tel: "13333333333", value: '100w', time: '2222-22-22' },
 ])
 const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -51,7 +54,7 @@ const formatDate = (dateString) => {
 }
 const getTransactions = async () => {
     try {
-        response = await axios.get('api/' + searchKey.value);
+        const response = await axios.get('/api/transactions');
         if (response.status === 200) {
             cards.value = response.data.data;
             cards.value.forEach(item => {
@@ -64,29 +67,42 @@ const getTransactions = async () => {
 };
 
 onMounted(() => {
-    //getTransactions();
+    getTransactions();
 });
 </script>
 
 <style lang="scss" scoped>
+body {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .card-container {
-  margin-top: 5vh;
-  display: flex;
-  flex-wrap: wrap; /* 允许子项换行 */
-  gap: 20px; /* 控制卡片之间的间距 */
+    margin-top: 5vh;
+    display: flex;
+    flex-wrap: wrap;
+    /* 允许子项换行 */
+    gap: 20px;
+    /* 控制卡片之间的间距 */
 }
 
 .card-item {
-  flex: 1 1 calc(33.333% - 20px); /* 每个卡片占据三分之一宽度，并减去间距 */
-  box-sizing: border-box;
+    flex: 1 1 calc(33.333% - 20px);
+    /* 每个卡片占据三分之一宽度，并减去间距 */
+    box-sizing: border-box;
 }
+
 .hover-card {
-  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
-  cursor: pointer; /* 鼠标悬停时显示指针 */
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    cursor: pointer;
+    /* 鼠标悬停时显示指针 */
 }
 
 .hover-card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
-  transform: translateY(-5px); /* 提升效果 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+    transform: translateY(-5px);
+    /* 提升效果 */
 }
 </style>
