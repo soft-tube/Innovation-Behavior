@@ -15,8 +15,8 @@
                 <div v-for="card in cards" :key="card.title" class="card-item">
                     <el-card class="hover-card">
                         <h3>{{ card.title }}</h3>
-                        <h4>{{ card.appln_id }}</h4>
-                        <p>{{ card.description }}</p>
+                        <h4>专利号：{{ card.appln_id }}</h4>
+                        <p>专利概述：{{ card.description }}</p>
                         <p>专利拥有者：{{ card.owner }}</p>
                         <p>联系方式： {{ card.tel }}</p>
                         <p>意向转让价格： {{ card.value }}</p>
@@ -33,14 +33,7 @@ import { ref, onMounted } from 'vue'
 import { Search } from '@element-plus/icons-vue'
 import axios from 'axios';
 const searchKey = ref('')
-const cards = ref([
-    { title: 'Card 1', description: 'Description 1', appln_id: '1', owner: 'XXZ', tel: "13333333333", value: '100w', time: '2222-22-22' },
-    { title: 'Card 2', description: 'Description 2', appln_id: '2', owner: 'XXZ', tel: "13333333333", value: '100w', time: '2222-22-22' },
-    { title: 'Card 3', description: 'Description 3', appln_id: '3', owner: 'XXZ', tel: "13333333333", value: '100w', time: '2222-22-22' },
-    { title: 'Card 4', description: 'Description 4', appln_id: '4', owner: 'XXZ', tel: "13333333333", value: '100w', time: '2222-22-22' },
-    { title: 'Card 5', description: 'Description 5', appln_id: '5', owner: 'XXZ', tel: "13333333333", value: '100w', time: '2222-22-22' },
-    { title: 'Card 6', description: 'Description 6', appln_id: '6', owner: 'XXZ', tel: "13333333333", value: '100w', time: '2222-22-22' },
-])
+const cards = ref([])
 const formatDate = (dateString) => {
     const date = new Date(dateString);
     const year = date.getFullYear();
